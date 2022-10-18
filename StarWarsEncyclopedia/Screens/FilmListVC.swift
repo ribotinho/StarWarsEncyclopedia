@@ -7,14 +7,19 @@
 
 import UIKit
 
-class FilmListVC: UIViewController {
+class FilmListVC: DataLoadingVC {
     
     var films : [Film] = []
-    let filmsTableView = UITableView(frame: .zero, style: .plain)
+    let filmsCollectionView : UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        return collectionView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureTableView()
+        view.backgroundColor = .systemBackground
+        title = "Films"
+        configureCollectionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -22,12 +27,14 @@ class FilmListVC: UIViewController {
     }
     
     private func getFilms() {
+        showLoadingView()
         Task {
             do{
                 let results = try await NetworkManager.shared.get(type: FilmResult.self, for: Endpoint.films)
                 films = results.results
                 DispatchQueue.main.async {
-                    self.filmsTableView.reloadData()
+                    self.dismissLoadingView()
+                    self.filmsCollectionView.reloadData()
                 }
             }catch{
                 //show alert
@@ -36,34 +43,37 @@ class FilmListVC: UIViewController {
         }
     }
     
-    private func configureTableView() {
-        view.addSubview(filmsTableView)
-        filmsTableView.translatesAutoresizingMaskIntoConstraints = false
-        filmsTableView.delegate = self
-        filmsTableView.dataSource = self
-        filmsTableView.register(FilmCellView.self, forCellReuseIdentifier: FilmCellView.reuseID)
-        filmsTableView.rowHeight = 150
-        filmsTableView.separatorStyle = .none
-        filmsTableView.backgroundColor = .clear
+    private func configureCollectionView() {
+        view.addSubview(filmsCollectionView)
+        filmsCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        filmsCollectionView.delegate = self
+        filmsCollectionView.dataSource = self
+        filmsCollectionView.backgroundColor = .systemBackground
+        filmsCollectionView.register(FilmCellView.self, forCellWithReuseIdentifier: FilmCellView.reuseID)
         
-         
         NSLayoutConstraint.activate([
-            filmsTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
-            filmsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            filmsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            filmsTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            filmsCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+            filmsCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            filmsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            filmsCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 }
 
-extension FilmListVC: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return films.count
+
+extension FilmListVC : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        films.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: FilmCellView.reuseID, for: indexPath) as! FilmCellView
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FilmCellView.reuseID, for: indexPath) as! FilmCellView
         cell.set(film: films[indexPath.row])
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: 150)
+    }
+    
 }

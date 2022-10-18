@@ -9,32 +9,38 @@ import UIKit
 
 class MainMenuVC: UIViewController {
     
-
+    
     let logoImageView = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black
+        view.backgroundColor = .systemBackground
+        configureNavigationController()
         configureLogoImageView()
         configureStackView()
     }
     
-    func configureLogoImageView() {
+    private func configureNavigationController() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.backgroundColor = .systemBackground
+    }
+    
+    private func configureLogoImageView() {
         
         view.addSubview(logoImageView)
-        logoImageView.image = UIImage(named: "SWLogo")
+        logoImageView.image = UIImage(named: "SWLogo1")
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         logoImageView.clipsToBounds = true
         logoImageView.contentMode = .scaleAspectFit
         
         NSLayoutConstraint.activate([
-            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoImageView.heightAnchor.constraint(equalToConstant: 200)
         ])
     }
     
-    func configureStackView(){
+    private func configureStackView(){
         
         var offset = 75.0
         
@@ -63,7 +69,7 @@ extension MainMenuVC : MainMenuDelegate {
         case .films:
             navigationController?.pushViewController(FilmListVC(), animated: true)
         case .people:
-            print("people")
+            navigationController?.pushViewController(PeopleListVC(), animated: true)
         case .planets:
             print("planets")
         case .species:

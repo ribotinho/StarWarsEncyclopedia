@@ -12,6 +12,11 @@
 		5F312B6228FE9C46002A5B07 /* FilmListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F312B6128FE9C46002A5B07 /* FilmListVC.swift */; };
 		5F312B6428FEAA1A002A5B07 /* FilmCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F312B6328FEAA1A002A5B07 /* FilmCellView.swift */; };
 		5F312B6828FEAC48002A5B07 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F312B6728FEAC48002A5B07 /* UIView+Ext.swift */; };
+		5F312B6A28FEE228002A5B07 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F312B6928FEE228002A5B07 /* Constants.swift */; };
+		5F312B6D28FEE5BA002A5B07 /* TangoSans_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F312B6C28FEE52B002A5B07 /* TangoSans_Bold.ttf */; };
+		5F312B7028FEEC56002A5B07 /* PeopleListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F312B6F28FEEC56002A5B07 /* PeopleListVC.swift */; };
+		5F312B7228FEFE04002A5B07 /* TangoSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F312B7128FEFE04002A5B07 /* TangoSans.ttf */; };
+		5F312B7828FF0042002A5B07 /* DataLoadingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F312B7728FF0042002A5B07 /* DataLoadingVC.swift */; };
 		5F8DE71D28FDCBF60070BA7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8DE71C28FDCBF60070BA7C /* AppDelegate.swift */; };
 		5F8DE71F28FDCBF60070BA7C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8DE71E28FDCBF60070BA7C /* SceneDelegate.swift */; };
 		5F8DE72128FDCBF60070BA7C /* MainMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8DE72028FDCBF60070BA7C /* MainMenuVC.swift */; };
@@ -30,6 +35,11 @@
 		5F312B6128FE9C46002A5B07 /* FilmListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmListVC.swift; sourceTree = "<group>"; };
 		5F312B6328FEAA1A002A5B07 /* FilmCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmCellView.swift; sourceTree = "<group>"; };
 		5F312B6728FEAC48002A5B07 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		5F312B6928FEE228002A5B07 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5F312B6C28FEE52B002A5B07 /* TangoSans_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TangoSans_Bold.ttf; sourceTree = "<group>"; };
+		5F312B6F28FEEC56002A5B07 /* PeopleListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListVC.swift; sourceTree = "<group>"; };
+		5F312B7128FEFE04002A5B07 /* TangoSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TangoSans.ttf; sourceTree = "<group>"; };
+		5F312B7728FF0042002A5B07 /* DataLoadingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadingVC.swift; sourceTree = "<group>"; };
 		5F8DE71928FDCBF60070BA7C /* StarWarsEncyclopedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarWarsEncyclopedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F8DE71C28FDCBF60070BA7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F8DE71E28FDCBF60070BA7C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,7 +68,8 @@
 		5F312B5C28FE885F002A5B07 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				5F312B5D28FE8889002A5B07 /* MainMenuLabelStackView.swift */,
+				5F312B7328FEFEB0002A5B07 /* Views */,
+				5F312B7428FEFEB5002A5B07 /* StackViews */,
 				5F312B6528FEAA2E002A5B07 /* Cells */,
 			);
 			path = CustomViews;
@@ -75,9 +86,28 @@
 		5F312B6628FEAC30002A5B07 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				5F312B6C28FEE52B002A5B07 /* TangoSans_Bold.ttf */,
+				5F312B7128FEFE04002A5B07 /* TangoSans.ttf */,
 				5F312B6728FEAC48002A5B07 /* UIView+Ext.swift */,
+				5F312B6928FEE228002A5B07 /* Constants.swift */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		5F312B7328FEFEB0002A5B07 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5F312B7728FF0042002A5B07 /* DataLoadingVC.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5F312B7428FEFEB5002A5B07 /* StackViews */ = {
+			isa = PBXGroup;
+			children = (
+				5F312B5D28FE8889002A5B07 /* MainMenuLabelStackView.swift */,
+			);
+			path = StackViews;
 			sourceTree = "<group>";
 		};
 		5F8DE71028FDCBF60070BA7C = {
@@ -118,6 +148,7 @@
 			children = (
 				5F8DE72028FDCBF60070BA7C /* MainMenuVC.swift */,
 				5F312B6128FE9C46002A5B07 /* FilmListVC.swift */,
+				5F312B6F28FEEC56002A5B07 /* PeopleListVC.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -200,6 +231,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F312B7228FEFE04002A5B07 /* TangoSans.ttf in Resources */,
+				5F312B6D28FEE5BA002A5B07 /* TangoSans_Bold.ttf in Resources */,
 				5F8DE72928FDCBF80070BA7C /* LaunchScreen.storyboard in Resources */,
 				5F8DE72628FDCBF80070BA7C /* Assets.xcassets in Resources */,
 			);
@@ -223,8 +256,11 @@
 				5F312B6428FEAA1A002A5B07 /* FilmCellView.swift in Sources */,
 				5F312B6828FEAC48002A5B07 /* UIView+Ext.swift in Sources */,
 				5F312B6228FE9C46002A5B07 /* FilmListVC.swift in Sources */,
+				5F312B6A28FEE228002A5B07 /* Constants.swift in Sources */,
 				5F8DE71D28FDCBF60070BA7C /* AppDelegate.swift in Sources */,
+				5F312B7028FEEC56002A5B07 /* PeopleListVC.swift in Sources */,
 				5F8DE71F28FDCBF60070BA7C /* SceneDelegate.swift in Sources */,
+				5F312B7828FF0042002A5B07 /* DataLoadingVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +402,7 @@
 				DEVELOPMENT_TEAM = 97979SR3M8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StarWarsEncyclopedia/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -393,6 +430,7 @@
 				DEVELOPMENT_TEAM = 97979SR3M8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StarWarsEncyclopedia/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

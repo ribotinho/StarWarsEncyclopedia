@@ -40,9 +40,10 @@ class MainMenuLabelStackView: UIStackView {
             self.addGestureRecognizer(tapGesture)
         }
         
-        layer.borderColor = UIColor.yellow.cgColor
-        layer.borderWidth = 1
+        backgroundColor = .secondarySystemBackground
         layer.cornerRadius = 10
+        layer.shadowRadius = 10
+        layer.shadowColor = UIColor.black.cgColor
         
         configureImageView()
         configureTextField()
@@ -52,7 +53,6 @@ class MainMenuLabelStackView: UIStackView {
     private func configureImageView(){
         addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.tintColor = .yellow
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
         
@@ -65,7 +65,7 @@ class MainMenuLabelStackView: UIStackView {
     private func configureTextField(){
         addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .white
+        label.font = UIFont(name: Fonts.tangoSansRegular.rawValue, size: 16.0)
         
         NSLayoutConstraint.activate([
             label.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 16),
@@ -77,7 +77,6 @@ class MainMenuLabelStackView: UIStackView {
         addSubview(chevronImageView)
         chevronImageView.translatesAutoresizingMaskIntoConstraints = false
         chevronImageView.image = UIImage(systemName: "chevron.right")
-        chevronImageView.tintColor = .yellow
         chevronImageView.clipsToBounds = true
         chevronImageView.contentMode = .scaleAspectFit
         

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PersonResult: Codable {
+struct PeopleResult: Codable {
     var count: Int
-    var results: [Person]
+    var results: [People]
 }

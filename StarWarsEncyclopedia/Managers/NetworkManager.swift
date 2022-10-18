@@ -15,9 +15,8 @@ class NetworkManager {
     private init() {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
-
-    func getFilms(for endpoint : Endpoint, completed: @escaping (Result<[Film],NetworkError>) -> Void)  {
-        
+    
+    func getGeneric<T: Codable>(type: T.Type, for endpoint : Endpoint, completed: @escaping (Result<T,NetworkError>) -> Void)  {
         
         guard let url = URL(string: endpoint.rawValue) else {
             print("invalid URL")
@@ -41,14 +40,12 @@ class NetworkManager {
             guard let data = data else {
                 print("invalid data")
                 completed(.failure(NetworkError.invalidResponse))
-                return }
-            
-            
-            
+                return
+            }
+ 
             do {
-                let filmResult = try self.decoder.decode(FilmResult.self, from: data)
-                completed(.success(filmResult.results))
-                print(filmResult.results)
+                let filmResult = try self.decoder.decode(T.self, from: data)
+                completed(.success(filmResult))
             }catch {
                 print("decoding error")
             }
@@ -64,41 +61,7 @@ class NetworkManager {
 //MARK: - Async await
 extension NetworkManager {
     
-    func getFilms(for endpoint : Endpoint) async throws -> [Film] {
-        
-        guard let url = URL(string: endpoint.rawValue) else {
-            throw NetworkError.invalidURL }
-        
-        let (data, response) = try await URLSession.shared.data(from: url)
-        
-        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { throw NetworkError.invalidResponse }
-        
-        do {
-            let results = try decoder.decode(FilmResult.self, from: data)
-            return results.results
-        }catch {
-            throw NetworkError.invalidData
-        }
-    }
-    
-    func getPersons(for endpoint : Endpoint) async throws -> [Person] {
-        
-        guard let url = URL(string: endpoint.rawValue) else {
-            throw NetworkError.invalidURL }
-        
-        let (data, response) = try await URLSession.shared.data(from: url)
-        
-        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { throw NetworkError.invalidResponse }
-        
-        do {
-            let results = try decoder.decode(PersonResult.self, from: data)
-            return results.results
-        }catch {
-            throw NetworkError.invalidData
-        }
-    }
-    
-    func getFilms<T: Codable>(type: T.Type, for endpoint : Endpoint) async throws -> T {
+    func get<T: Codable>(type: T.Type, for endpoint : Endpoint) async throws -> T {
         
         guard let url = URL(string: endpoint.rawValue) else {
             throw NetworkError.invalidURL }
@@ -120,6 +83,10 @@ enum Endpoint : String {
     case baseURL = "https://swapi.dev/api/"
     case films = "https://swapi.dev/api/films/"
     case people = "https://swapi.dev/api/people/"
+    case planets = "https://swapi.dev/api/planets/"
+    case species = "https://swapi.dev/api/species/"
+    case starships = "https://swapi.dev/api/starships/"
+    case vehicles = "https://swapi.dev/api/vehicles/"
 }
 
 enum NetworkError : Error {

@@ -14,4 +14,6 @@ struct Film : Codable {
     var producer : String
     var releaseDate : String
     var episodeId : Int
+    var openingCrawl : String
+    var characters : [String]
 }

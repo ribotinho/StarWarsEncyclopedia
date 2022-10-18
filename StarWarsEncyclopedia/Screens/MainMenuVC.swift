@@ -61,7 +61,7 @@ extension MainMenuVC : MainMenuDelegate {
     func didTap(for tab: MainMenuTab) {
         switch tab {
         case .films:
-            navigationController?.pushViewController(FilmsVC(), animated: true)
+            navigationController?.pushViewController(FilmListVC(), animated: true)
         case .people:
             print("people")
         case .planets:

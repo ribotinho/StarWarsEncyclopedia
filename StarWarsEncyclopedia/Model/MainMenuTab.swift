@@ -7,16 +7,30 @@
 
 import Foundation
 
-struct MainMenuTab {
-    var title : String
-    var image : String
+enum MainMenuTab : String, CaseIterable {
     
-    static let tabs : [MainMenuTab] = [
-        MainMenuTab(title: "Films", image: "film"),
-        MainMenuTab(title: "People", image: "person.2.fill"),
-        MainMenuTab(title: "Planets", image: "globe.americas.fill"),
-        MainMenuTab(title: "Species", image: "allergens"),
-        MainMenuTab(title: "Vehicles", image: "car.fill"),
-        MainMenuTab(title: "Starship", image: "airplane.circle.fill")
-    ]
+    case films = "film"
+    case people = "person.2.fill"
+    case planets = "globe.americas.fill"
+    case species = "allergens"
+    case vehicles = "car.fill"
+    case starship = "airplane.circle.fill"
+    
+    func displayName() -> String {
+        switch self {
+        case .films:
+            return "Films"
+        case .people:
+            return "People"
+        case .planets:
+            return "Planets"
+        case .species:
+            return "Species"
+        case .vehicles:
+            return "Vehicles"
+        case .starship:
+            return "Starships"
+        }
+    }
+    
 }

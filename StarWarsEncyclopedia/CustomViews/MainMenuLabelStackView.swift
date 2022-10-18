@@ -12,6 +12,8 @@ class MainMenuLabelStackView: UIStackView {
     let label = UILabel()
     let imageView = UIImageView()
     let chevronImageView = UIImageView()
+    var tab : MainMenuTab?
+    var delegate : MainMenuDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,10 +24,11 @@ class MainMenuLabelStackView: UIStackView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(text: String, systemImage: String) {
+    convenience init(tab: MainMenuTab) {
         self.init(frame: .zero)
-        label.text = text
-        imageView.image = UIImage(systemName: systemImage)
+        self.tab = tab
+        label.text = tab.displayName()
+        imageView.image = UIImage(systemName: tab.rawValue)
     }
     
     private func configure(){
@@ -86,7 +89,11 @@ class MainMenuLabelStackView: UIStackView {
     }
     
     @objc func tapped(_ sender: UITapGestureRecognizer? = nil) {
-        print("tapped \(label.text)")
+        guard let tab = tab else { return }
+        delegate?.didTap(for: tab)
     }
+}
 
+protocol MainMenuDelegate {
+    func didTap(for tab: MainMenuTab)
 }

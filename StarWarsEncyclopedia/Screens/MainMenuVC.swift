@@ -28,7 +28,7 @@ class MainMenuVC: UIViewController {
         logoImageView.contentMode = .scaleAspectFit
         
         NSLayoutConstraint.activate([
-            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoImageView.heightAnchor.constraint(equalToConstant: 200)
         ])
@@ -38,11 +38,12 @@ class MainMenuVC: UIViewController {
         
         var offset = 75.0
         
-        for tab in MainMenuTab.tabs {
+        for tab in MainMenuTab.allCases {
             
-            let stackView = MainMenuLabelStackView(text: tab.title, systemImage: tab.image)
+            let stackView = MainMenuLabelStackView(tab: tab)
             view.addSubview(stackView)
             stackView.translatesAutoresizingMaskIntoConstraints = false
+            stackView.delegate = self
             
             NSLayoutConstraint.activate([
                 stackView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: offset),
@@ -53,7 +54,25 @@ class MainMenuVC: UIViewController {
             
             offset += 60.0
         }
+    }
+}
 
+extension MainMenuVC : MainMenuDelegate {
+    func didTap(for tab: MainMenuTab) {
+        switch tab {
+        case .films:
+            navigationController?.pushViewController(FilmsVC(), animated: true)
+        case .people:
+            print("people")
+        case .planets:
+            print("planets")
+        case .species:
+            print("species")
+        case .vehicles:
+            print("vehicles")
+        case .starship:
+            print("starship")
+        }
     }
     
     

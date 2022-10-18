@@ -17,6 +17,7 @@
 		5F312B7028FEEC56002A5B07 /* PeopleListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F312B6F28FEEC56002A5B07 /* PeopleListVC.swift */; };
 		5F312B7228FEFE04002A5B07 /* TangoSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F312B7128FEFE04002A5B07 /* TangoSans.ttf */; };
 		5F312B7828FF0042002A5B07 /* DataLoadingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F312B7728FF0042002A5B07 /* DataLoadingVC.swift */; };
+		5F312B7B28FF01D3002A5B07 /* FilmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F312B7A28FF01D3002A5B07 /* FilmVC.swift */; };
 		5F8DE71D28FDCBF60070BA7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8DE71C28FDCBF60070BA7C /* AppDelegate.swift */; };
 		5F8DE71F28FDCBF60070BA7C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8DE71E28FDCBF60070BA7C /* SceneDelegate.swift */; };
 		5F8DE72128FDCBF60070BA7C /* MainMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8DE72028FDCBF60070BA7C /* MainMenuVC.swift */; };
@@ -40,6 +41,7 @@
 		5F312B6F28FEEC56002A5B07 /* PeopleListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListVC.swift; sourceTree = "<group>"; };
 		5F312B7128FEFE04002A5B07 /* TangoSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TangoSans.ttf; sourceTree = "<group>"; };
 		5F312B7728FF0042002A5B07 /* DataLoadingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadingVC.swift; sourceTree = "<group>"; };
+		5F312B7A28FF01D3002A5B07 /* FilmVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmVC.swift; sourceTree = "<group>"; };
 		5F8DE71928FDCBF60070BA7C /* StarWarsEncyclopedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarWarsEncyclopedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F8DE71C28FDCBF60070BA7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F8DE71E28FDCBF60070BA7C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,14 +67,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5F312B5C28FE885F002A5B07 /* CustomViews */ = {
+		5F312B5C28FE885F002A5B07 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				5F312B7328FEFEB0002A5B07 /* Views */,
+				5F312B7328FEFEB0002A5B07 /* Navigation Controllers */,
 				5F312B7428FEFEB5002A5B07 /* StackViews */,
 				5F312B6528FEAA2E002A5B07 /* Cells */,
 			);
-			path = CustomViews;
+			path = "Custom Views";
 			sourceTree = "<group>";
 		};
 		5F312B6528FEAA2E002A5B07 /* Cells */ = {
@@ -94,12 +96,12 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
-		5F312B7328FEFEB0002A5B07 /* Views */ = {
+		5F312B7328FEFEB0002A5B07 /* Navigation Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				5F312B7728FF0042002A5B07 /* DataLoadingVC.swift */,
 			);
-			path = Views;
+			path = "Navigation Controllers";
 			sourceTree = "<group>";
 		};
 		5F312B7428FEFEB5002A5B07 /* StackViews */ = {
@@ -108,6 +110,23 @@
 				5F312B5D28FE8889002A5B07 /* MainMenuLabelStackView.swift */,
 			);
 			path = StackViews;
+			sourceTree = "<group>";
+		};
+		5F312B7928FF01B4002A5B07 /* Film */ = {
+			isa = PBXGroup;
+			children = (
+				5F312B6128FE9C46002A5B07 /* FilmListVC.swift */,
+				5F312B7A28FF01D3002A5B07 /* FilmVC.swift */,
+			);
+			path = Film;
+			sourceTree = "<group>";
+		};
+		5F312B7C28FF01D6002A5B07 /* People */ = {
+			isa = PBXGroup;
+			children = (
+				5F312B6F28FEEC56002A5B07 /* PeopleListVC.swift */,
+			);
+			path = People;
 			sourceTree = "<group>";
 		};
 		5F8DE71028FDCBF60070BA7C = {
@@ -137,7 +156,7 @@
 				5F312B6628FEAC30002A5B07 /* Support */,
 				5F8DE73428FDCD5B0070BA7C /* Managers */,
 				5F8DE73128FDCD0F0070BA7C /* Model */,
-				5F312B5C28FE885F002A5B07 /* CustomViews */,
+				5F312B5C28FE885F002A5B07 /* Custom Views */,
 				5F8DE73028FDCD050070BA7C /* Screens */,
 			);
 			path = StarWarsEncyclopedia;
@@ -147,8 +166,8 @@
 			isa = PBXGroup;
 			children = (
 				5F8DE72028FDCBF60070BA7C /* MainMenuVC.swift */,
-				5F312B6128FE9C46002A5B07 /* FilmListVC.swift */,
-				5F312B6F28FEEC56002A5B07 /* PeopleListVC.swift */,
+				5F312B7928FF01B4002A5B07 /* Film */,
+				5F312B7C28FF01D6002A5B07 /* People */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -255,6 +274,7 @@
 				5F312B5E28FE8889002A5B07 /* MainMenuLabelStackView.swift in Sources */,
 				5F312B6428FEAA1A002A5B07 /* FilmCellView.swift in Sources */,
 				5F312B6828FEAC48002A5B07 /* UIView+Ext.swift in Sources */,
+				5F312B7B28FF01D3002A5B07 /* FilmVC.swift in Sources */,
 				5F312B6228FE9C46002A5B07 /* FilmListVC.swift in Sources */,
 				5F312B6A28FEE228002A5B07 /* Constants.swift in Sources */,
 				5F8DE71D28FDCBF60070BA7C /* AppDelegate.swift in Sources */,

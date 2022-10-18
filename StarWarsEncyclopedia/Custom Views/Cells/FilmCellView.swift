@@ -22,7 +22,7 @@ class FilmCellView: UICollectionViewCell {
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowRadius = 10
         layer.cornerRadius = 10
-        backgroundColor = .white
+        backgroundColor = .secondarySystemBackground
     }
     
 
@@ -31,7 +31,7 @@ class FilmCellView: UICollectionViewCell {
     }
     
     func set(film : Film){
-        filmImageView.image = UIImage(named: "episode1")
+        filmImageView.image = UIImage(named: "episode_\(film.episodeId)")
         titleLabel.text = film.title
         directorLabel.text = film.director
         dateLabel.text = film.releaseDate
@@ -66,7 +66,7 @@ class FilmCellView: UICollectionViewCell {
             filmImageView.topAnchor.constraint(equalTo: topAnchor, constant: topPadding),
             filmImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             filmImageView.widthAnchor.constraint(equalToConstant: 75),
-            filmImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            filmImageView.heightAnchor.constraint(equalToConstant: 125),
             
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: topPadding),
             titleLabel.leadingAnchor.constraint(equalTo: filmImageView.trailingAnchor, constant: leadingPadding),

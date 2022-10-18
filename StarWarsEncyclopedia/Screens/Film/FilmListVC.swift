@@ -31,7 +31,7 @@ class FilmListVC: DataLoadingVC {
         Task {
             do{
                 let results = try await NetworkManager.shared.get(type: FilmResult.self, for: Endpoint.films)
-                films = results.results
+                films = results.results.sorted(by: { $0.episodeId < $1.episodeId })
                 DispatchQueue.main.async {
                     self.dismissLoadingView()
                     self.filmsCollectionView.reloadData()
@@ -74,6 +74,11 @@ extension FilmListVC : UICollectionViewDelegate, UICollectionViewDataSource, UIC
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.width, height: 150)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let destination = FilmVC(film: films[indexPath.row])
+        navigationController?.pushViewController(destination, animated: true)
     }
     
 }

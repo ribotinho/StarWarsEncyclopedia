@@ -21,6 +21,7 @@
 		5F6058DF28FFEC60005384BD /* DataLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6058DE28FFEC60005384BD /* DataLoadingView.swift */; };
 		5F6058E228FFF0ED005384BD /* AvatarCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6058E128FFF0ED005384BD /* AvatarCellView.swift */; };
 		5F6058E728FFF231005384BD /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6058E628FFF231005384BD /* UIImageView+Ext.swift */; };
+		5F6058EA29001A22005384BD /* PeopleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6058E929001A22005384BD /* PeopleVC.swift */; };
 		5F8DE71D28FDCBF60070BA7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8DE71C28FDCBF60070BA7C /* AppDelegate.swift */; };
 		5F8DE71F28FDCBF60070BA7C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8DE71E28FDCBF60070BA7C /* SceneDelegate.swift */; };
 		5F8DE72128FDCBF60070BA7C /* MainMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8DE72028FDCBF60070BA7C /* MainMenuVC.swift */; };
@@ -48,6 +49,7 @@
 		5F6058DE28FFEC60005384BD /* DataLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadingView.swift; sourceTree = "<group>"; };
 		5F6058E128FFF0ED005384BD /* AvatarCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCellView.swift; sourceTree = "<group>"; };
 		5F6058E628FFF231005384BD /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
+		5F6058E929001A22005384BD /* PeopleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleVC.swift; sourceTree = "<group>"; };
 		5F8DE71928FDCBF60070BA7C /* StarWarsEncyclopedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarWarsEncyclopedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F8DE71C28FDCBF60070BA7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F8DE71E28FDCBF60070BA7C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				5F312B6F28FEEC56002A5B07 /* PeopleListVC.swift */,
+				5F6058E929001A22005384BD /* PeopleVC.swift */,
 			);
 			path = People;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				5F6058E728FFF231005384BD /* UIImageView+Ext.swift in Sources */,
 				5F312B7028FEEC56002A5B07 /* PeopleListVC.swift in Sources */,
 				5F8DE71F28FDCBF60070BA7C /* SceneDelegate.swift in Sources */,
+				5F6058EA29001A22005384BD /* PeopleVC.swift in Sources */,
 				5F312B7828FF0042002A5B07 /* DataLoadingVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

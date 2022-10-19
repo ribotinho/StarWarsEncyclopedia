@@ -9,7 +9,7 @@ import UIKit
 
 struct Colors {
     static let viewBackground = UIColor(red: 214/255, green: 214/255, blue:214/255, alpha: 1)
-    static let backgroundColor = UIColor.secondarySystemBackground
+    static let backgroundColor = UIColor.black
 }
 
 enum Fonts : String {

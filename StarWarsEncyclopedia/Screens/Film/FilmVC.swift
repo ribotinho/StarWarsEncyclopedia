@@ -31,6 +31,10 @@ class FilmVC: DataLoadingVC {
         getFilmCharacters()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        characters.removeAll()
+    }
+    
     init(film: Film) {
         super.init(nibName: nil, bundle: nil)
         self.film = film
@@ -88,25 +92,69 @@ class FilmVC: DataLoadingVC {
     
     private func configureGeneralInfoView(){
         let imageView = UIImageView(image: UIImage(named: "episode_\(film.episodeId)"))
-        generalInfoView.addSubview(imageView)
+        let episodeLabel = UILabel(frame: .zero)
+        let directorLabel = UILabel(frame: .zero)
+        let producerLabel = UILabel(frame: .zero)
+        let dateLabel = UILabel(frame: .zero)
+        generalInfoView.addSubviews([imageView, episodeLabel, directorLabel, dateLabel, producerLabel])
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        episodeLabel.translatesAutoresizingMaskIntoConstraints  = false
+        directorLabel.translatesAutoresizingMaskIntoConstraints = false
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        producerLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        episodeLabel.text = "Episode \(film.episodeId)"
+        directorLabel.text = "Director: \(film.director)"
+        dateLabel.text = "Date: \(film.releaseDate)"
+        producerLabel.text = "Producer \(film.producer)"
+        
+        episodeLabel.font = UIFont.systemFont(ofSize: 12)
+        directorLabel.font = UIFont.systemFont(ofSize: 12)
+        dateLabel.font = UIFont.systemFont(ofSize: 12)
+        producerLabel.font = UIFont.systemFont(ofSize: 12)
+        
+        episodeLabel.textColor = .white
+        directorLabel.textColor = .white
+        dateLabel.textColor = .white
+        producerLabel.textColor = .white
         
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: generalInfoView.topAnchor, constant: 8),
             imageView.leadingAnchor.constraint(equalTo: generalInfoView.leadingAnchor, constant: 8),
             imageView.widthAnchor.constraint(equalToConstant: 125),
             imageView.heightAnchor.constraint(equalToConstant: 175),
+            
+            episodeLabel.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 8),
+            episodeLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 16),
+            episodeLabel.trailingAnchor.constraint(equalTo: generalInfoView.trailingAnchor, constant: -8),
+            episodeLabel.heightAnchor.constraint(equalToConstant: 20),
+            
+            directorLabel.topAnchor.constraint(equalTo: episodeLabel.bottomAnchor, constant: 8),
+            directorLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 16),
+            directorLabel.trailingAnchor.constraint(equalTo: generalInfoView.trailingAnchor, constant: -8),
+            directorLabel.heightAnchor.constraint(equalToConstant: 20),
+            
+            producerLabel.topAnchor.constraint(equalTo: directorLabel.bottomAnchor, constant: 8),
+            producerLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 16),
+            producerLabel.trailingAnchor.constraint(equalTo: generalInfoView.trailingAnchor, constant: -8),
+            producerLabel.heightAnchor.constraint(equalToConstant: 20),
+            
+            dateLabel.topAnchor.constraint(equalTo: producerLabel.bottomAnchor, constant: 8),
+            dateLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 16),
+            dateLabel.trailingAnchor.constraint(equalTo: generalInfoView.trailingAnchor, constant: -8),
+            dateLabel.heightAnchor.constraint(equalToConstant: 20),
         ])
         
     }
     
     private func configureDescriptionView(){
-        descriptionView.backgroundColor = Colors.viewBackground
+        descriptionView.backgroundColor = Colors.backgroundColor
         descriptionView.layer.cornerRadius = 10
         
         let topLabel = UILabel()
-        topLabel.text = "Description"
+        topLabel.text = "Opening Crawl"
+        topLabel.textColor = UIColor.systemYellow
         topLabel.translatesAutoresizingMaskIntoConstraints = false
         topLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
         
@@ -116,6 +164,7 @@ class FilmVC: DataLoadingVC {
         bottomLabel.font = UIFont.systemFont(ofSize: 12.0)
         bottomLabel.numberOfLines = 0
         bottomLabel.sizeToFit()
+        bottomLabel.textColor = .white
         
         descriptionView.addSubviews([topLabel, bottomLabel])
         
@@ -135,7 +184,8 @@ class FilmVC: DataLoadingVC {
     private func configurecharactersView(){
         
         let topLabel = UILabel()
-        topLabel.text = "Characters"
+        topLabel.text = "Main characters"
+        topLabel.textColor = .systemYellow
         topLabel.translatesAutoresizingMaskIntoConstraints = false
         topLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
         view.addSubviews([topLabel])
@@ -170,5 +220,11 @@ extension FilmVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: collectionView.frame.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let destination = PeopleVC()
+        destination.character = characters[indexPath.row]
+        navigationController?.pushViewController(destination, animated: true)
     }
 }

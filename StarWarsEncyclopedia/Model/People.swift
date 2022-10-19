@@ -16,4 +16,5 @@ struct People: Codable {
     var eyeColor: String
     var birthYear: String
     var gender: String
+    var url: String
 }

@@ -48,8 +48,10 @@ class FilmListVC: DataLoadingVC {
         filmsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         filmsCollectionView.delegate = self
         filmsCollectionView.dataSource = self
-        filmsCollectionView.backgroundColor = Colors.backgroundColor
+        filmsCollectionView.backgroundColor = .black
+        filmsCollectionView.showsVerticalScrollIndicator = false
         filmsCollectionView.register(FilmCellView.self, forCellWithReuseIdentifier: FilmCellView.reuseID)
+        
         
         NSLayoutConstraint.activate([
             filmsCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),

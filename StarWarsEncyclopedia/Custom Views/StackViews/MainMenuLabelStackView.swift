@@ -40,9 +40,9 @@ class MainMenuLabelStackView: UIStackView {
             self.addGestureRecognizer(tapGesture)
         }
         
-        backgroundColor = Colors.viewBackground
         layer.cornerRadius = 10
-        
+        layer.borderColor = UIColor.systemYellow.cgColor
+        layer.borderWidth = 1
         
         configureImageView()
         configureTextField()
@@ -65,6 +65,7 @@ class MainMenuLabelStackView: UIStackView {
         addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: Fonts.coolvetica.rawValue, size: 16.0)
+        label.textColor = .white
         
         NSLayoutConstraint.activate([
             label.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 16),

@@ -30,6 +30,7 @@ class AvatarCellView: UICollectionViewCell {
         avatarImage.translatesAutoresizingMaskIntoConstraints = false
         
         nameLabel.textAlignment = .center
+        nameLabel.textColor = UIColor.systemYellow
         
         NSLayoutConstraint.activate([
             avatarImage.centerXAnchor.constraint(equalTo: centerXAnchor),

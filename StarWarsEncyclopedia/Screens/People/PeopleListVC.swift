@@ -138,6 +138,9 @@ class PeopleListVC: DataLoadingVC {
                         self.peopleTableView.layoutIfNeeded()
                     }
                     self.peopleTableView.reloadData()
+                    if let count = self.peopleResult?.results.count {
+                        self.peopleTableView.scrollToRow(at: IndexPath(row: self.people.count - count, section: 0), at: .top, animated: true)
+                    }
                 }
             }catch{
                 print("Could not load more people")

@@ -24,10 +24,12 @@ class PeopleListVC: DataLoadingVC {
         title = "People List"
         view.backgroundColor = Colors.backgroundColor
         configure()
+        configureNavigationBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        searchBar.isHidden = true
         getPeople()
     }
     
@@ -101,10 +103,19 @@ class PeopleListVC: DataLoadingVC {
         tablieViewBottomConstraint.isActive = true
     }
     
+    private func configureNavigationBar(){
+        let searchItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchBarButtonItemTapped(_:)))
+        navigationItem.rightBarButtonItem = searchItem
+    }
+    
     private func updateTableViewBottomConstraint(){
         tablieViewBottomConstraint.isActive = false
         tablieViewBottomConstraint = peopleTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
         tablieViewBottomConstraint.isActive = true
+    }
+    
+    @objc func searchBarButtonItemTapped(_ sender: UITapGestureRecognizer? = nil){
+        searchBar.isHidden = false
     }
     
     @objc func loadButtonTapped(_ sender: UITapGestureRecognizer? = nil) {

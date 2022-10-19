@@ -10,4 +10,6 @@ import Foundation
 struct PeopleResult: Codable {
     var count: Int
     var results: [People]
+    var next: String?
+    var previous: String?
 }

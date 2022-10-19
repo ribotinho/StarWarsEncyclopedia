@@ -10,4 +10,6 @@ import Foundation
 struct FilmResult : Codable {
     var count : Int
     var results: [Film]
+    var next: String?
+    var previous: String?
 }

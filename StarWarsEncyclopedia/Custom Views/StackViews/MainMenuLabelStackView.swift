@@ -8,7 +8,7 @@
 import UIKit
 
 class MainMenuLabelStackView: UIStackView {
-
+    
     let label = UILabel()
     let imageView = UIImageView()
     let chevronImageView = UIImageView()
@@ -40,10 +40,9 @@ class MainMenuLabelStackView: UIStackView {
             self.addGestureRecognizer(tapGesture)
         }
         
-        backgroundColor = .secondarySystemBackground
+        backgroundColor = Colors.viewBackground
         layer.cornerRadius = 10
-        layer.shadowRadius = 10
-        layer.shadowColor = UIColor.black.cgColor
+        
         
         configureImageView()
         configureTextField()
@@ -65,7 +64,7 @@ class MainMenuLabelStackView: UIStackView {
     private func configureTextField(){
         addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: Fonts.tangoSansRegular.rawValue, size: 16.0)
+        label.font = UIFont(name: Fonts.coolvetica.rawValue, size: 16.0)
         
         NSLayoutConstraint.activate([
             label.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 16),

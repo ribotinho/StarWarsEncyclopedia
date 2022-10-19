@@ -12,7 +12,7 @@ class PeopleListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "People List"
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = Colors.backgroundColor
     }
     
 

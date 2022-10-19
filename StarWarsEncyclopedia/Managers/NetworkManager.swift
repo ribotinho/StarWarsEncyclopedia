@@ -16,9 +16,9 @@ class NetworkManager {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
     
-    func getGeneric<T: Codable>(type: T.Type, for endpoint : Endpoint, completed: @escaping (Result<T,NetworkError>) -> Void)  {
+    func getGeneric<T: Codable>(type: T.Type, for endpoint : String, completed: @escaping (Result<T,NetworkError>) -> Void)  {
         
-        guard let url = URL(string: endpoint.rawValue) else {
+        guard let url = URL(string: endpoint) else {
             print("invalid URL")
             completed(.failure(NetworkError.invalidURL))
             return
@@ -61,9 +61,9 @@ class NetworkManager {
 //MARK: - Async await
 extension NetworkManager {
     
-    func get<T: Codable>(type: T.Type, for endpoint : Endpoint) async throws -> T {
+    func get<T: Codable>(type: T.Type, for endpoint : String) async throws -> T {
         
-        guard let url = URL(string: endpoint.rawValue) else {
+        guard let url = URL(string: endpoint) else {
             throw NetworkError.invalidURL }
         
         let (data, response) = try await URLSession.shared.data(from: url)

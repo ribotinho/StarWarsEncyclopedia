@@ -17,7 +17,7 @@ class FilmListVC: DataLoadingVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = Colors.backgroundColor
         title = "Films"
         configureCollectionView()
     }
@@ -30,7 +30,7 @@ class FilmListVC: DataLoadingVC {
         showLoadingView()
         Task {
             do{
-                let results = try await NetworkManager.shared.get(type: FilmResult.self, for: Endpoint.films)
+                let results = try await NetworkManager.shared.get(type: FilmResult.self, for: Endpoint.films.rawValue)
                 films = results.results.sorted(by: { $0.episodeId < $1.episodeId })
                 DispatchQueue.main.async {
                     self.dismissLoadingView()
@@ -48,7 +48,7 @@ class FilmListVC: DataLoadingVC {
         filmsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         filmsCollectionView.delegate = self
         filmsCollectionView.dataSource = self
-        filmsCollectionView.backgroundColor = .systemBackground
+        filmsCollectionView.backgroundColor = Colors.backgroundColor
         filmsCollectionView.register(FilmCellView.self, forCellWithReuseIdentifier: FilmCellView.reuseID)
         
         NSLayoutConstraint.activate([

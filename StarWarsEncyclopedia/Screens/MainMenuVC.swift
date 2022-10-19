@@ -14,7 +14,7 @@ class MainMenuVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = Colors.backgroundColor
         configureNavigationController()
         configureLogoImageView()
         configureStackView()
@@ -22,7 +22,7 @@ class MainMenuVC: UIViewController {
     
     private func configureNavigationController() {
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.backgroundColor = .systemBackground
+        navigationController?.navigationBar.backgroundColor = Colors.backgroundColor
     }
     
     private func configureLogoImageView() {

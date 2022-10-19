@@ -8,11 +8,13 @@
 import UIKit
 
 struct Colors {
-    static let darkGray = UIColor(red: 28, green: 28, blue: 30, alpha: 0)
+    static let viewBackground = UIColor(red: 214/255, green: 214/255, blue:214/255, alpha: 1)
+    static let backgroundColor = UIColor.secondarySystemBackground
 }
 
 enum Fonts : String {
     case tangoSansBold = "TangoSans_Bold"
     case tangoSansRegular = "TangoSans"
+    case coolvetica = "coolvetica rg"
 }
 

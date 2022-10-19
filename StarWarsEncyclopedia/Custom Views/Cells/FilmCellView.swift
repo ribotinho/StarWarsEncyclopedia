@@ -19,10 +19,8 @@ class FilmCellView: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureSubviews()
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowRadius = 10
         layer.cornerRadius = 10
-        backgroundColor = .secondarySystemBackground
+        backgroundColor = Colors.viewBackground
     }
     
 
@@ -49,7 +47,7 @@ class FilmCellView: UICollectionViewCell {
     
     private func addLayoutConstraints() {
         
-        let labelHeight : CGFloat = 15
+        let labelHeight : CGFloat = 20
         let topPadding : CGFloat = 8
         let leadingPadding : CGFloat = 16
         

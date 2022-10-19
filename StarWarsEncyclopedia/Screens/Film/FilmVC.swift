@@ -10,18 +10,25 @@ import UIKit
 class FilmVC: DataLoadingVC {
 
     var film : Film!
-    var generalInfoView: UIView!
-    var descriptionView: UIView!
-    var charactersView: UIView!
+    var characters : [People] = []
+    var generalInfoView = UIView(frame: .zero)
+    var descriptionView = UIView(frame: .zero)
+    let charactersView : UICollectionView = {
+        var layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        return collectionView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = Colors.backgroundColor
         title = film.title
         configure()
+        getFilmCharacters()
     }
     
     init(film: Film) {
@@ -33,10 +40,24 @@ class FilmVC: DataLoadingVC {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func getFilmCharacters(){
+        Task {
+            for character in self.film.characters {
+                do{
+                    let character = try await NetworkManager.shared.get(type: People.self, for: character)
+                    characters.append(character)
+                    DispatchQueue.main.async {
+                        self.charactersView.reloadData()
+                    }
+                }catch {
+                    //show alert or text in the charactersView?
+                    print("Error getting characters for \(film.title)")
+                }
+            }
+        }
+    }
+    
     private func configure(){
-        generalInfoView = UIView(frame: .zero)
-        descriptionView = UIView(frame: .zero)
-        charactersView = UIView(frame: .zero)
         view.addSubviews([generalInfoView, descriptionView, charactersView])
         
         generalInfoView.translatesAutoresizingMaskIntoConstraints = false
@@ -81,10 +102,8 @@ class FilmVC: DataLoadingVC {
     }
     
     private func configureDescriptionView(){
-        descriptionView.backgroundColor = .secondarySystemBackground
+        descriptionView.backgroundColor = Colors.viewBackground
         descriptionView.layer.cornerRadius = 10
-        descriptionView.layer.shadowColor = UIColor.black.cgColor
-        descriptionView.layer.shadowRadius = 10
         
         let topLabel = UILabel()
         topLabel.text = "Description"
@@ -101,7 +120,7 @@ class FilmVC: DataLoadingVC {
         descriptionView.addSubviews([topLabel, bottomLabel])
         
         NSLayoutConstraint.activate([
-            topLabel.topAnchor.constraint(equalTo: descriptionView.topAnchor, constant: -25),
+            topLabel.topAnchor.constraint(equalTo: descriptionView.topAnchor, constant: -30),
             topLabel.leadingAnchor.constraint(equalTo: descriptionView.leadingAnchor, constant: 8),
             topLabel.trailingAnchor.constraint(equalTo: descriptionView.trailingAnchor, constant: -8),
             topLabel.heightAnchor.constraint(equalToConstant: 25),
@@ -114,23 +133,42 @@ class FilmVC: DataLoadingVC {
     }
     
     private func configurecharactersView(){
-        charactersView.backgroundColor = .secondarySystemBackground
-        charactersView.layer.cornerRadius = 10
-        charactersView.layer.shadowColor = UIColor.black.cgColor
-        charactersView.layer.shadowRadius = 10
         
         let topLabel = UILabel()
         topLabel.text = "Characters"
         topLabel.translatesAutoresizingMaskIntoConstraints = false
         topLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
-        charactersView.addSubviews([topLabel])
+        view.addSubviews([topLabel])
+        
+        charactersView.layer.cornerRadius = 10
+        charactersView.backgroundColor = Colors.backgroundColor
+        charactersView.showsHorizontalScrollIndicator = false
+        charactersView.register(AvatarCellView.self, forCellWithReuseIdentifier: AvatarCellView.reuseID)
+        charactersView.delegate = self
+        charactersView.dataSource = self
         
         NSLayoutConstraint.activate([
-            topLabel.topAnchor.constraint(equalTo: charactersView.topAnchor, constant: -25),
+            topLabel.topAnchor.constraint(equalTo: charactersView.topAnchor, constant: -30),
             topLabel.leadingAnchor.constraint(equalTo: charactersView.leadingAnchor, constant: 8),
             topLabel.trailingAnchor.constraint(equalTo: charactersView.trailingAnchor, constant: -8),
             topLabel.heightAnchor.constraint(equalToConstant: 25)
         ])
     }
+}
+
+
+extension FilmVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return characters.count
+    }
     
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AvatarCellView.reuseID, for: indexPath) as! AvatarCellView
+        cell.set(character: characters[indexPath.row])
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 100, height: collectionView.frame.height)
+    }
 }

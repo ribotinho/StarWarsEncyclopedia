@@ -1,6 +1,6 @@
 # StarWarsEncyclopedia
 
-Candidate for the @MoureDev and @Rviewer [Challenge](https://go.rviewer.io/dev-unit-converter-es/?utm_source=mouredev&utm_medium=github_repo&utm_campaign=unit_converter_mouredev)
+Candidate for the @MoureDev and @Rviewer [Challenge](https://github.com/mouredev/Monthly-App-Challenge-2022/blob/main/SolucionesReto02.md)
 
 # Screenshots
 

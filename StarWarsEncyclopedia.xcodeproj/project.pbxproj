@@ -18,6 +18,7 @@
 		5F312B7228FEFE04002A5B07 /* TangoSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F312B7128FEFE04002A5B07 /* TangoSans.ttf */; };
 		5F312B7828FF0042002A5B07 /* DataLoadingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F312B7728FF0042002A5B07 /* DataLoadingVC.swift */; };
 		5F312B7B28FF01D3002A5B07 /* FilmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F312B7A28FF01D3002A5B07 /* FilmVC.swift */; };
+		5F510F5729015D7E00E7E791 /* StatViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F510F5629015D7E00E7E791 /* StatViewCell.swift */; };
 		5F6058DF28FFEC60005384BD /* DataLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6058DE28FFEC60005384BD /* DataLoadingView.swift */; };
 		5F6058E228FFF0ED005384BD /* AvatarCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6058E128FFF0ED005384BD /* AvatarCellView.swift */; };
 		5F6058E728FFF231005384BD /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6058E628FFF231005384BD /* UIImageView+Ext.swift */; };
@@ -47,6 +48,7 @@
 		5F312B7128FEFE04002A5B07 /* TangoSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TangoSans.ttf; sourceTree = "<group>"; };
 		5F312B7728FF0042002A5B07 /* DataLoadingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadingVC.swift; sourceTree = "<group>"; };
 		5F312B7A28FF01D3002A5B07 /* FilmVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmVC.swift; sourceTree = "<group>"; };
+		5F510F5629015D7E00E7E791 /* StatViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatViewCell.swift; sourceTree = "<group>"; };
 		5F6058DE28FFEC60005384BD /* DataLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadingView.swift; sourceTree = "<group>"; };
 		5F6058E128FFF0ED005384BD /* AvatarCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCellView.swift; sourceTree = "<group>"; };
 		5F6058E628FFF231005384BD /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 		5F312B6528FEAA2E002A5B07 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				5F510F5629015D7E00E7E791 /* StatViewCell.swift */,
 				5F312B6328FEAA1A002A5B07 /* FilmCellView.swift */,
 				5F6058E128FFF0ED005384BD /* AvatarCellView.swift */,
 				5F6058EB29004164005384BD /* PeopleCellView.swift */,
@@ -313,6 +316,7 @@
 				5F6058DF28FFEC60005384BD /* DataLoadingView.swift in Sources */,
 				5F312B5E28FE8889002A5B07 /* MainMenuLabelStackView.swift in Sources */,
 				5F312B6428FEAA1A002A5B07 /* FilmCellView.swift in Sources */,
+				5F510F5729015D7E00E7E791 /* StatViewCell.swift in Sources */,
 				5F312B6828FEAC48002A5B07 /* UIView+Ext.swift in Sources */,
 				5F312B7B28FF01D3002A5B07 /* FilmVC.swift in Sources */,
 				5F312B6228FE9C46002A5B07 /* FilmListVC.swift in Sources */,

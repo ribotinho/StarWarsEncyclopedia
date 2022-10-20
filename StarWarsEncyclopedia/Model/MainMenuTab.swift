@@ -21,7 +21,7 @@ enum MainMenuTab : String, CaseIterable {
         case .films:
             return "Films"
         case .people:
-            return "People"
+            return "Characters"
         case .planets:
             return "Planets"
         case .species:

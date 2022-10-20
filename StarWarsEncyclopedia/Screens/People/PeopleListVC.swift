@@ -21,7 +21,7 @@ class PeopleListVC: DataLoadingVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "People List"
+        title = "Characters"
         view.backgroundColor = Colors.backgroundColor
         configure()
         configureNavigationBar()
@@ -163,6 +163,12 @@ extension PeopleListVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 75
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let destination = PeopleVC()
+        destination.character = filteredPeople.count == 0 ? people[indexPath.row] : filteredPeople[indexPath.row]
+        navigationController?.pushViewController(destination, animated: true)
     }
 }
 

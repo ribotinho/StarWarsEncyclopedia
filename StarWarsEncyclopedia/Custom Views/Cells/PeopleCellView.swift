@@ -64,6 +64,8 @@ class PeopleCellView: UITableViewCell {
             avatarImageView.image = image
         }else{
             avatarImageView.image = UIImage(named: "placeholderAvatar")
+            avatarImageView.layer.cornerRadius = 25
+            avatarImageView.clipsToBounds = true
         }
         nameLabel.text = people.name
     }
